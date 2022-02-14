@@ -1,12 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View,Vibration } from 'react-native';
+// import { StatusBar } from 'expostatus-bar';
+import React from 'react';
+import { StyleSheet, Dimensions, Text, View, ScrollView } from 'react-native';
+// import { ScrollView } from 'react-native-web';
+const {width: SCREEN_WIDTH }= Dimensions.get("window");
+console.log(SCREEN_WIDTH);
 
 export default function App() {
   return (
-    <View style={{ flex: 1}}>
-      <View style={{ flex: 1,backgroundColor:'tomato'}}></View>
-      <View style={{ flex: 1,backgroundColor:'teal'}}></View>
-      <View style={{ flex: 1,backgroundColor:'orange'}}></View>
+    <View style={styles.container}>
+      <View style={styles.city}>
+        <Text style={styles.cityName}>Seoul</Text>
+      </View>
+      <ScrollView pagingEnabled horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.weather}>
+        <View style={styles.day}>
+          <Text style={styles.temp}>27</Text>
+          <Text style={styles.description}>Synny</Text>
+        </View>
+        <View style={styles.day}>
+          <Text style={styles.temp}>27</Text>
+          <Text style={styles.description}>Synny</Text>
+        </View>
+        <View style={styles.day}>
+          <Text style={styles.temp}>27</Text>
+          <Text style={styles.description}>Synny</Text>
+        </View>
+      </ScrollView>
     </View>
   );
 }
@@ -14,13 +32,32 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
-    alignItems: 'center',
-    justifyContent: 'center',
-    
+    backgroundColor:"tomato",    
   },
-  text: {
-    fontSize: 28,
-    backgroundColor: 'orange'
+  city: {
+    flex:1.2,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  cityName: {
+    fontSize:68, 
+    fontWeight:"500",
+  },
+  weather: {
+    // backgroundColor: "teal"
+  },
+  day: {
+    width: SCREEN_WIDTH,
+    alignItems: "center",
+  },
+  temp: {
+    marginTop: 50,
+    fontSize: 178,
+
+  },
+  description: {
+    marginTop: -30,
+    fontSize: 60,
   }
+
 });
